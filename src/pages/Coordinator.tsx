@@ -1,5 +1,5 @@
 import { Card } from "@/components/ui/card";
-import InquiryForm from "@/components/inquiry/InquiryForm";
+import CoordinatorApplicationForm from "@/components/coordinator/CoordinatorApplicationForm";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import { CheckCircle2, MapPin, Award, IdCard } from "lucide-react";
@@ -63,8 +63,9 @@ export default function Coordinator() {
       <section className="container py-16">
         <div className="mx-auto max-w-3xl">
           <h2 className="text-center font-display text-3xl font-bold text-primary">Coordinator Application</h2>
+          <p className="mt-2 text-center text-sm text-muted-foreground">Submit below — your Member ID will be auto-assigned (e.g. MPFH-CO-0001).</p>
           <Card className="mt-8 p-6 md:p-8">
-            <InquiryForm defaultService="Coordinator Joining" />
+            <CoordinatorApplicationForm />
           </Card>
         </div>
       </section>

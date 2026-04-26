@@ -1,6 +1,6 @@
 import { Sidebar, SidebarContent, SidebarGroup, SidebarGroupContent, SidebarGroupLabel, SidebarMenu, SidebarMenuButton, SidebarMenuItem, useSidebar } from "@/components/ui/sidebar";
 import { NavLink } from "@/components/NavLink";
-import { Heart, LayoutDashboard, FileText, CreditCard, MessageSquare, Bell, Users, Globe, MapPin, ShieldCheck, Inbox } from "lucide-react";
+import { Heart, LayoutDashboard, FileText, CreditCard, MessageSquare, Bell, Users, Globe, MapPin, ShieldCheck, Inbox, ClipboardList } from "lucide-react";
 import type { AppRole } from "./DashboardLayout";
 
 interface Props { roles: AppRole[]; }
@@ -29,6 +29,7 @@ export default function DashboardSidebar({ roles }: Props) {
     { to: "/dashboard/admin/coordinators", label: "Coordinators", icon: Users },
     { to: "/dashboard/admin/payments", label: "All Payments", icon: CreditCard },
     { to: "/dashboard/admin/notices", label: "Manage Notices", icon: Bell },
+    { to: "/dashboard/admin/tasks", label: "Admin Tasks", icon: ClipboardList },
     { to: "/dashboard/admin/roles", label: "Roles", icon: ShieldCheck },
   ];
 

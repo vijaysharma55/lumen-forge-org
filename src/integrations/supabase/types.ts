@@ -14,6 +14,42 @@ export type Database = {
   }
   public: {
     Tables: {
+      admin_tasks: {
+        Row: {
+          assigned_to: string | null
+          created_at: string
+          created_by: string | null
+          due_date: string | null
+          id: string
+          notes: string | null
+          status: string
+          title: string
+          updated_at: string
+        }
+        Insert: {
+          assigned_to?: string | null
+          created_at?: string
+          created_by?: string | null
+          due_date?: string | null
+          id?: string
+          notes?: string | null
+          status?: string
+          title: string
+          updated_at?: string
+        }
+        Update: {
+          assigned_to?: string | null
+          created_at?: string
+          created_by?: string | null
+          due_date?: string | null
+          id?: string
+          notes?: string | null
+          status?: string
+          title?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
       coordinators: {
         Row: {
           approval_status: string
@@ -220,6 +256,7 @@ export type Database = {
           notes: string | null
           payer_mobile: string | null
           payer_name: string
+          payment_code: string | null
           payment_status: string
           payment_type: string
           txn_id: string | null
@@ -232,6 +269,7 @@ export type Database = {
           notes?: string | null
           payer_mobile?: string | null
           payer_name: string
+          payment_code?: string | null
           payment_status?: string
           payment_type: string
           txn_id?: string | null
@@ -244,6 +282,7 @@ export type Database = {
           notes?: string | null
           payer_mobile?: string | null
           payer_name?: string
+          payment_code?: string | null
           payment_status?: string
           payment_type?: string
           txn_id?: string | null
