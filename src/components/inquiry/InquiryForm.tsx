@@ -58,13 +58,16 @@ export default function InquiryForm({ defaultService = "NGO Website Setup", comp
       return;
     }
     setLoading(true);
+    const d = parsed.data;
     const payload = {
-      ...parsed.data,
-      organization: parsed.data.organization || null,
-      email: parsed.data.email || null,
-      state: parsed.data.state || null,
-      district: parsed.data.district || null,
-      message: parsed.data.message || null,
+      full_name: d.full_name,
+      mobile: d.mobile,
+      service_type: d.service_type,
+      organization: d.organization || null,
+      email: d.email || null,
+      state: d.state || null,
+      district: d.district || null,
+      message: d.message || null,
     };
     const { error } = await supabase.from("inquiries").insert([payload]);
     setLoading(false);
