@@ -21,19 +21,32 @@ export default function NgoWebsite() {
       <section className="bg-hero py-20 text-primary-foreground">
         <div className="container grid gap-8 lg:grid-cols-2 lg:items-center">
           <div>
-            <span className="inline-block rounded-full bg-accent px-3 py-1 text-xs font-bold text-accent-foreground">Most Popular Service</span>
-            <h1 className="mt-4 font-display text-4xl font-extrabold md:text-5xl">Professional NGO Website at ₹4,999</h1>
-            <p className="mt-4 text-primary-foreground/85">Get your NGO online in days. Pay just 25% advance to start.</p>
+            <span className="inline-block rounded-full bg-accent px-3 py-1 text-xs font-bold text-accent-foreground">🔥 Limited slots — Most Popular</span>
+            <h1 className="mt-4 font-display text-4xl font-extrabold leading-tight md:text-5xl">
+              Apni NGO ki Professional Website<br />
+              sirf <span className="text-accent">₹1,250 se start</span>.
+            </h1>
+            <p className="mt-4 text-lg text-primary-foreground/85">
+              Total ₹4,999 · Pay just 25% advance · <strong className="text-accent">Live in 7 days.</strong>
+            </p>
             <div className="mt-6 flex flex-wrap gap-3">
-              <Button asChild variant="hero" size="xl"><Link to="/contact">Pay 25% Advance</Link></Button>
-              <Button asChild variant="outlineLight" size="xl"><a href="#inquire">Send Inquiry</a></Button>
+              <Button asChild variant="hero" size="xl"><a href="#inquire">Start with ₹1,250</a></Button>
+              <Button asChild variant="outlineLight" size="xl"><a href="#inquire">Get Free Demo</a></Button>
+            </div>
+            <div className="mt-5 flex flex-wrap gap-x-5 gap-y-2 text-sm text-primary-foreground/80">
+              <span className="inline-flex items-center gap-1.5"><Check className="h-4 w-4 text-accent" /> 7-day delivery</span>
+              <span className="inline-flex items-center gap-1.5"><Check className="h-4 w-4 text-accent" /> Pay balance on launch</span>
+              <span className="inline-flex items-center gap-1.5"><Check className="h-4 w-4 text-accent" /> CSR-ready</span>
             </div>
           </div>
           <Card className="bg-card/95 p-6 backdrop-blur">
             <div className="text-center">
               <div className="text-sm text-muted-foreground">Complete package</div>
               <div className="font-display text-5xl font-extrabold text-primary">₹4,999</div>
-              <div className="mt-1 text-sm text-accent font-semibold">Start with ₹1,250 advance</div>
+              <div className="mt-2 inline-block rounded-lg bg-success/10 px-3 py-1.5">
+                <div className="text-xs font-semibold text-success">Start with</div>
+                <div className="font-display text-xl font-extrabold text-success">₹1,250 advance</div>
+              </div>
             </div>
             <ul className="mt-6 space-y-2">
               {features.map((f) => (
