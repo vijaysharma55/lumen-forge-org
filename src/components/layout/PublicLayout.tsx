@@ -1,10 +1,13 @@
+import { useEffect } from "react";
 import { Outlet } from "react-router-dom";
 import SiteHeader from "./SiteHeader";
 import SiteFooter from "./SiteFooter";
 import FloatingInquiry from "@/components/inquiry/FloatingInquiry";
 import StickyMobileCTA from "./StickyMobileCTA";
+import { captureReferralFromUrl } from "@/lib/referral";
 
 export default function PublicLayout() {
+  useEffect(() => { captureReferralFromUrl(); }, []);
   return (
     <div className="flex min-h-screen flex-col">
       {/* Limited slots urgency strip */}
