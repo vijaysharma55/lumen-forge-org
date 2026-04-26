@@ -1,13 +1,14 @@
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { CreditCard } from "lucide-react";
+import { CreditCard, Download } from "lucide-react";
 import { useEffect, useState } from "react";
 import { supabase } from "@/integrations/supabase/client";
 import { useOutletContext } from "react-router-dom";
 import type { User } from "@supabase/supabase-js";
 import type { AppRole } from "./DashboardLayout";
+import { generateReceiptPDF } from "@/lib/pdf";
 
-interface Payment { id: string; amount: number; payment_type: string; payment_status: string; txn_id: string | null; created_at: string; payer_name: string; }
+interface Payment { id: string; amount: number; payment_type: string; payment_status: string; txn_id: string | null; created_at: string; payer_name: string; payer_mobile: string | null; notes: string | null; }
 
 export default function PaymentsPage() {
   const { user, roles } = useOutletContext<{ user: User; roles: AppRole[] }>();
