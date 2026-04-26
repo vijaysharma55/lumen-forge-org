@@ -14,16 +14,351 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      coordinators: {
+        Row: {
+          approval_status: string
+          block: string | null
+          created_at: string
+          district: string
+          email: string | null
+          full_name: string
+          id: string
+          member_code: string | null
+          mobile: string
+          panchayat: string | null
+          referral_code: string | null
+          role_level: string
+          state: string
+          user_id: string | null
+        }
+        Insert: {
+          approval_status?: string
+          block?: string | null
+          created_at?: string
+          district: string
+          email?: string | null
+          full_name: string
+          id?: string
+          member_code?: string | null
+          mobile: string
+          panchayat?: string | null
+          referral_code?: string | null
+          role_level: string
+          state: string
+          user_id?: string | null
+        }
+        Update: {
+          approval_status?: string
+          block?: string | null
+          created_at?: string
+          district?: string
+          email?: string | null
+          full_name?: string
+          id?: string
+          member_code?: string | null
+          mobile?: string
+          panchayat?: string | null
+          referral_code?: string | null
+          role_level?: string
+          state?: string
+          user_id?: string | null
+        }
+        Relationships: []
+      }
+      documents: {
+        Row: {
+          created_at: string
+          doc_type: string
+          file_url: string
+          id: string
+          meta: Json | null
+          user_id: string | null
+        }
+        Insert: {
+          created_at?: string
+          doc_type: string
+          file_url: string
+          id?: string
+          meta?: Json | null
+          user_id?: string | null
+        }
+        Update: {
+          created_at?: string
+          doc_type?: string
+          file_url?: string
+          id?: string
+          meta?: Json | null
+          user_id?: string | null
+        }
+        Relationships: []
+      }
+      inquiries: {
+        Row: {
+          created_at: string
+          district: string | null
+          email: string | null
+          full_name: string
+          id: string
+          message: string | null
+          mobile: string
+          organization: string | null
+          service_type: string
+          state: string | null
+          status: string
+        }
+        Insert: {
+          created_at?: string
+          district?: string | null
+          email?: string | null
+          full_name: string
+          id?: string
+          message?: string | null
+          mobile: string
+          organization?: string | null
+          service_type: string
+          state?: string | null
+          status?: string
+        }
+        Update: {
+          created_at?: string
+          district?: string | null
+          email?: string | null
+          full_name?: string
+          id?: string
+          message?: string | null
+          mobile?: string
+          organization?: string | null
+          service_type?: string
+          state?: string | null
+          status?: string
+        }
+        Relationships: []
+      }
+      ngo_clients: {
+        Row: {
+          client_code: string | null
+          contact_person: string
+          created_at: string
+          due_amount: number | null
+          email: string | null
+          id: string
+          mobile: string
+          ngo_name: string
+          package_name: string | null
+          paid_amount: number | null
+          total_amount: number | null
+          updated_at: string
+          user_id: string | null
+          website_status: string
+        }
+        Insert: {
+          client_code?: string | null
+          contact_person: string
+          created_at?: string
+          due_amount?: number | null
+          email?: string | null
+          id?: string
+          mobile: string
+          ngo_name: string
+          package_name?: string | null
+          paid_amount?: number | null
+          total_amount?: number | null
+          updated_at?: string
+          user_id?: string | null
+          website_status?: string
+        }
+        Update: {
+          client_code?: string | null
+          contact_person?: string
+          created_at?: string
+          due_amount?: number | null
+          email?: string | null
+          id?: string
+          mobile?: string
+          ngo_name?: string
+          package_name?: string | null
+          paid_amount?: number | null
+          total_amount?: number | null
+          updated_at?: string
+          user_id?: string | null
+          website_status?: string
+        }
+        Relationships: []
+      }
+      notices: {
+        Row: {
+          audience_type: string
+          created_at: string
+          created_by: string | null
+          id: string
+          message: string
+          title: string
+        }
+        Insert: {
+          audience_type?: string
+          created_at?: string
+          created_by?: string | null
+          id?: string
+          message: string
+          title: string
+        }
+        Update: {
+          audience_type?: string
+          created_at?: string
+          created_by?: string | null
+          id?: string
+          message?: string
+          title?: string
+        }
+        Relationships: []
+      }
+      payments: {
+        Row: {
+          amount: number
+          created_at: string
+          id: string
+          notes: string | null
+          payer_mobile: string | null
+          payer_name: string
+          payment_status: string
+          payment_type: string
+          txn_id: string | null
+          user_id: string | null
+        }
+        Insert: {
+          amount: number
+          created_at?: string
+          id?: string
+          notes?: string | null
+          payer_mobile?: string | null
+          payer_name: string
+          payment_status?: string
+          payment_type: string
+          txn_id?: string | null
+          user_id?: string | null
+        }
+        Update: {
+          amount?: number
+          created_at?: string
+          id?: string
+          notes?: string | null
+          payer_mobile?: string | null
+          payer_name?: string
+          payment_status?: string
+          payment_type?: string
+          txn_id?: string | null
+          user_id?: string | null
+        }
+        Relationships: []
+      }
+      profiles: {
+        Row: {
+          avatar_url: string | null
+          created_at: string
+          district: string | null
+          full_name: string | null
+          id: string
+          mobile: string | null
+          organization: string | null
+          state: string | null
+          updated_at: string
+        }
+        Insert: {
+          avatar_url?: string | null
+          created_at?: string
+          district?: string | null
+          full_name?: string | null
+          id: string
+          mobile?: string | null
+          organization?: string | null
+          state?: string | null
+          updated_at?: string
+        }
+        Update: {
+          avatar_url?: string | null
+          created_at?: string
+          district?: string | null
+          full_name?: string | null
+          id?: string
+          mobile?: string | null
+          organization?: string | null
+          state?: string | null
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      support_tickets: {
+        Row: {
+          admin_response: string | null
+          created_at: string
+          id: string
+          message: string
+          priority: string
+          status: string
+          subject: string
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          admin_response?: string | null
+          created_at?: string
+          id?: string
+          message: string
+          priority?: string
+          status?: string
+          subject: string
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          admin_response?: string | null
+          created_at?: string
+          id?: string
+          message?: string
+          priority?: string
+          status?: string
+          subject?: string
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
+      user_roles: {
+        Row: {
+          created_at: string
+          id: string
+          role: Database["public"]["Enums"]["app_role"]
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          role: Database["public"]["Enums"]["app_role"]
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          role?: Database["public"]["Enums"]["app_role"]
+          user_id?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
     }
     Functions: {
-      [_ in never]: never
+      has_role: {
+        Args: {
+          _role: Database["public"]["Enums"]["app_role"]
+          _user_id: string
+        }
+        Returns: boolean
+      }
     }
     Enums: {
-      [_ in never]: never
+      app_role: "admin" | "ngo_client" | "coordinator" | "member"
     }
     CompositeTypes: {
       [_ in never]: never
@@ -150,6 +485,8 @@ export type CompositeTypes<
 
 export const Constants = {
   public: {
-    Enums: {},
+    Enums: {
+      app_role: ["admin", "ngo_client", "coordinator", "member"],
+    },
   },
 } as const
