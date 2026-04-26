@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { ArrowRight, Globe, Handshake, Heart, Users, Award, CheckCircle2, Sparkles } from "lucide-react";
+import { ArrowRight, Globe, Handshake, Heart, Users, Award, CheckCircle2, Sparkles, Clock, ShieldCheck, BadgeCheck, Zap } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import heroImg from "@/assets/hero-ngo.jpg";
@@ -34,18 +34,24 @@ export default function Home() {
         <div className="relative container grid gap-12 py-20 lg:grid-cols-2 lg:py-28">
           <div className="text-primary-foreground animate-slide-up">
             <span className="inline-flex items-center gap-2 rounded-full border border-primary-foreground/20 bg-primary-foreground/10 px-3 py-1 text-xs font-medium backdrop-blur">
-              <Sparkles className="h-3.5 w-3.5 text-accent" /> Registered NGO • Pan-India Network
+              <Sparkles className="h-3.5 w-3.5 text-accent" /> Limited slots this month · Pan-India NGO Network
             </span>
             <h1 className="mt-5 font-display text-4xl font-extrabold leading-[1.1] text-balance md:text-5xl lg:text-6xl">
-              Empowering NGOs.<br />Connecting Communities.<br />
-              <span className="text-accent">Driving Real Impact.</span>
+              Apni NGO ki Professional Website<br />
+              sirf <span className="text-accent">₹1,250 se start</span> kare —<br />
+              <span className="text-accent">7 din me ready.</span>
             </h1>
             <p className="mt-5 max-w-xl text-lg text-primary-foreground/85">
-              Meri Pahal Fast Help Group is a unified platform for NGO website setup, CSR partnerships, the women hygiene mission, and a nationwide coordinator network.
+              Total package ₹4,999. Pay just 25% advance (₹1,250) to begin. CSR-ready, mobile-friendly NGO website, delivered in 7 days — plus a full ecosystem for coordinators, payments &amp; documents.
             </p>
             <div className="mt-8 flex flex-wrap gap-3">
-              <Button asChild variant="hero" size="xl"><Link to="/ngo-website">Get NGO Website <ArrowRight /></Link></Button>
-              <Button asChild variant="outlineLight" size="xl"><Link to="/coordinator">Join as Coordinator</Link></Button>
+              <Button asChild variant="hero" size="xl"><Link to="/ngo-website">Start with ₹1,250 <ArrowRight /></Link></Button>
+              <Button asChild variant="outlineLight" size="xl"><Link to="/contact">Get Free Demo</Link></Button>
+            </div>
+            <div className="mt-6 flex flex-wrap items-center gap-x-5 gap-y-2 text-sm text-primary-foreground/80">
+              <span className="inline-flex items-center gap-1.5"><Clock className="h-4 w-4 text-accent" /> 7-day delivery</span>
+              <span className="inline-flex items-center gap-1.5"><ShieldCheck className="h-4 w-4 text-accent" /> Registered NGO</span>
+              <span className="inline-flex items-center gap-1.5"><BadgeCheck className="h-4 w-4 text-accent" /> 500+ NGOs onboard</span>
             </div>
             <div className="mt-10 grid grid-cols-2 gap-6 sm:grid-cols-4">
               {stats.map((s) => (
