@@ -66,7 +66,7 @@ export default function InquiryForm({ defaultService = "NGO Website Setup", comp
       district: parsed.data.district || null,
       message: parsed.data.message || null,
     };
-    const { error } = await supabase.from("inquiries").insert(payload);
+    const { error } = await supabase.from("inquiries").insert([payload]);
     setLoading(false);
     if (error) {
       toast.error("Could not submit. Please try again.");
