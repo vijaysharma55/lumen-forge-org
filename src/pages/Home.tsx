@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { ArrowRight, Globe, Handshake, Heart, Users, Award, CheckCircle2, Sparkles } from "lucide-react";
+import { ArrowRight, Globe, Handshake, Heart, Users, Award, CheckCircle2, Sparkles, Clock, ShieldCheck, BadgeCheck, Zap } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import heroImg from "@/assets/hero-ngo.jpg";
@@ -34,18 +34,24 @@ export default function Home() {
         <div className="relative container grid gap-12 py-20 lg:grid-cols-2 lg:py-28">
           <div className="text-primary-foreground animate-slide-up">
             <span className="inline-flex items-center gap-2 rounded-full border border-primary-foreground/20 bg-primary-foreground/10 px-3 py-1 text-xs font-medium backdrop-blur">
-              <Sparkles className="h-3.5 w-3.5 text-accent" /> Registered NGO • Pan-India Network
+              <Sparkles className="h-3.5 w-3.5 text-accent" /> Limited slots this month · Pan-India NGO Network
             </span>
             <h1 className="mt-5 font-display text-4xl font-extrabold leading-[1.1] text-balance md:text-5xl lg:text-6xl">
-              Empowering NGOs.<br />Connecting Communities.<br />
-              <span className="text-accent">Driving Real Impact.</span>
+              Apni NGO ki Professional Website<br />
+              sirf <span className="text-accent">₹1,250 se start</span> kare —<br />
+              <span className="text-accent">7 din me ready.</span>
             </h1>
             <p className="mt-5 max-w-xl text-lg text-primary-foreground/85">
-              Meri Pahal Fast Help Group is a unified platform for NGO website setup, CSR partnerships, the women hygiene mission, and a nationwide coordinator network.
+              Total package ₹4,999. Pay just 25% advance (₹1,250) to begin. CSR-ready, mobile-friendly NGO website, delivered in 7 days — plus a full ecosystem for coordinators, payments &amp; documents.
             </p>
             <div className="mt-8 flex flex-wrap gap-3">
-              <Button asChild variant="hero" size="xl"><Link to="/ngo-website">Get NGO Website <ArrowRight /></Link></Button>
-              <Button asChild variant="outlineLight" size="xl"><Link to="/coordinator">Join as Coordinator</Link></Button>
+              <Button asChild variant="hero" size="xl"><Link to="/ngo-website">Start with ₹1,250 <ArrowRight /></Link></Button>
+              <Button asChild variant="outlineLight" size="xl"><Link to="/contact">Get Free Demo</Link></Button>
+            </div>
+            <div className="mt-6 flex flex-wrap items-center gap-x-5 gap-y-2 text-sm text-primary-foreground/80">
+              <span className="inline-flex items-center gap-1.5"><Clock className="h-4 w-4 text-accent" /> 7-day delivery</span>
+              <span className="inline-flex items-center gap-1.5"><ShieldCheck className="h-4 w-4 text-accent" /> Registered NGO</span>
+              <span className="inline-flex items-center gap-1.5"><BadgeCheck className="h-4 w-4 text-accent" /> 500+ NGOs onboard</span>
             </div>
             <div className="mt-10 grid grid-cols-2 gap-6 sm:grid-cols-4">
               {stats.map((s) => (
@@ -90,7 +96,74 @@ export default function Home() {
         </div>
       </section>
 
-      {/* WHY US */}
+      {/* PRICING — NGO Website */}
+      <section className="container py-20">
+        <div className="mx-auto max-w-3xl">
+          <div className="text-center">
+            <span className="inline-block rounded-full bg-accent-soft px-3 py-1 text-xs font-bold text-accent">Most Popular</span>
+            <h2 className="mt-3 font-display text-3xl font-extrabold text-primary md:text-4xl">Transparent pricing. No surprises.</h2>
+            <p className="mt-3 text-muted-foreground">One package. Everything your NGO needs to look credible online.</p>
+          </div>
+
+          <Card className="relative mt-10 overflow-hidden border-2 border-accent/30 p-8 shadow-elegant">
+            <div className="absolute right-4 top-4 inline-flex items-center gap-1 rounded-full bg-accent px-3 py-1 text-xs font-bold text-accent-foreground">
+              <Zap className="h-3.5 w-3.5" /> Limited slots
+            </div>
+            <div className="grid gap-8 md:grid-cols-2 md:items-center">
+              <div>
+                <div className="text-sm font-semibold uppercase tracking-wider text-muted-foreground">Professional NGO Website</div>
+                <div className="mt-2 flex items-baseline gap-2">
+                  <span className="font-display text-5xl font-extrabold text-primary">₹4,999</span>
+                  <span className="text-sm text-muted-foreground">total package</span>
+                </div>
+                <div className="mt-3 inline-block rounded-lg bg-success/10 px-3 py-2">
+                  <div className="text-xs font-semibold text-success">Start with just</div>
+                  <div className="font-display text-2xl font-extrabold text-success">₹1,250 <span className="text-sm font-medium">(25% advance)</span></div>
+                </div>
+                <div className="mt-4 flex items-center gap-2 text-sm text-foreground/80">
+                  <Clock className="h-4 w-4 text-accent" /> Live in <strong>7 days</strong> · Pay balance on delivery
+                </div>
+                <div className="mt-6 flex flex-col gap-2 sm:flex-row">
+                  <Button asChild variant="hero" size="lg" className="flex-1"><Link to="/ngo-website">Start with ₹1,250 <ArrowRight /></Link></Button>
+                  <Button asChild variant="outline" size="lg" className="flex-1"><Link to="/contact">Get Demo</Link></Button>
+                </div>
+              </div>
+              <ul className="space-y-2.5">
+                {[
+                  "Custom NGO branding, logo & domain",
+                  "About / Programs / Gallery / Donate pages",
+                  "Mobile responsive · SEO optimized",
+                  "Donation & contact forms built-in",
+                  "1 year free hosting + SSL",
+                  "WhatsApp chat button",
+                  "CSR-ready presentation",
+                ].map((p) => (
+                  <li key={p} className="flex items-start gap-2 text-sm">
+                    <CheckCircle2 className="mt-0.5 h-4 w-4 flex-shrink-0 text-success" />
+                    <span className="text-foreground/85">{p}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </Card>
+
+          {/* Trust badges row */}
+          <div className="mt-10 grid grid-cols-2 gap-3 sm:grid-cols-4">
+            {[
+              { i: ShieldCheck, t: "Registered NGO" },
+              { i: BadgeCheck, t: "500+ Partners" },
+              { i: Clock, t: "7-Day Delivery" },
+              { i: Award, t: "Pan-India Network" },
+            ].map((b) => (
+              <div key={b.t} className="flex items-center justify-center gap-2 rounded-xl border bg-card px-3 py-3 text-center text-sm font-semibold text-primary">
+                <b.i className="h-5 w-5 text-accent" /> {b.t}
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+
       <section className="container py-20">
         <div className="grid gap-12 lg:grid-cols-2 lg:items-center">
           <div>
