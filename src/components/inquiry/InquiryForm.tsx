@@ -10,6 +10,7 @@ import { toast } from "sonner";
 import { Loader2 } from "lucide-react";
 import { SITE, whatsappLink } from "@/config/site";
 import { generateAcknowledgement } from "@/lib/pdf";
+import { getReferralCode } from "@/lib/referral";
 
 const schema = z.object({
   full_name: z.string().trim().min(2, "Name too short").max(100),
@@ -70,6 +71,7 @@ export default function InquiryForm({ defaultService = "NGO Website Setup", comp
       state: d.state || null,
       district: d.district || null,
       message: d.message || null,
+      referral_code: getReferralCode(),
     };
     const { data: inserted, error } = await supabase.from("inquiries").insert([payload]).select("id").maybeSingle();
     setLoading(false);

@@ -138,6 +138,7 @@ export type Database = {
           message: string | null
           mobile: string
           organization: string | null
+          referral_code: string | null
           service_type: string
           state: string | null
           status: string
@@ -151,6 +152,7 @@ export type Database = {
           message?: string | null
           mobile: string
           organization?: string | null
+          referral_code?: string | null
           service_type: string
           state?: string | null
           status?: string
@@ -164,6 +166,7 @@ export type Database = {
           message?: string | null
           mobile?: string
           organization?: string | null
+          referral_code?: string | null
           service_type?: string
           state?: string | null
           status?: string
@@ -182,6 +185,7 @@ export type Database = {
           ngo_name: string
           package_name: string | null
           paid_amount: number | null
+          referral_code: string | null
           total_amount: number | null
           updated_at: string
           user_id: string | null
@@ -198,6 +202,7 @@ export type Database = {
           ngo_name: string
           package_name?: string | null
           paid_amount?: number | null
+          referral_code?: string | null
           total_amount?: number | null
           updated_at?: string
           user_id?: string | null
@@ -214,6 +219,7 @@ export type Database = {
           ngo_name?: string
           package_name?: string | null
           paid_amount?: number | null
+          referral_code?: string | null
           total_amount?: number | null
           updated_at?: string
           user_id?: string | null
@@ -325,6 +331,77 @@ export type Database = {
           updated_at?: string
         }
         Relationships: []
+      }
+      referrals: {
+        Row: {
+          commission_amount: number
+          created_at: string
+          id: string
+          notes: string | null
+          referral_code: string
+          referred_inquiry_id: string | null
+          referred_ngo_client_id: string | null
+          referred_payment_id: string | null
+          referrer_coordinator_id: string
+          status: string
+          updated_at: string
+        }
+        Insert: {
+          commission_amount?: number
+          created_at?: string
+          id?: string
+          notes?: string | null
+          referral_code: string
+          referred_inquiry_id?: string | null
+          referred_ngo_client_id?: string | null
+          referred_payment_id?: string | null
+          referrer_coordinator_id: string
+          status?: string
+          updated_at?: string
+        }
+        Update: {
+          commission_amount?: number
+          created_at?: string
+          id?: string
+          notes?: string | null
+          referral_code?: string
+          referred_inquiry_id?: string | null
+          referred_ngo_client_id?: string | null
+          referred_payment_id?: string | null
+          referrer_coordinator_id?: string
+          status?: string
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "referrals_referred_inquiry_id_fkey"
+            columns: ["referred_inquiry_id"]
+            isOneToOne: false
+            referencedRelation: "inquiries"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "referrals_referred_ngo_client_id_fkey"
+            columns: ["referred_ngo_client_id"]
+            isOneToOne: false
+            referencedRelation: "ngo_clients"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "referrals_referred_payment_id_fkey"
+            columns: ["referred_payment_id"]
+            isOneToOne: false
+            referencedRelation: "payments"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "referrals_referrer_coordinator_id_fkey"
+            columns: ["referrer_coordinator_id"]
+            isOneToOne: false
+            referencedRelation: "coordinators"
+            referencedColumns: ["id"]
+          },
+        ]
       }
       support_tickets: {
         Row: {
