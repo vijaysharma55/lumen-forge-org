@@ -29,6 +29,7 @@ import AdminClients from "./pages/dashboard/admin/AdminClients";
 import AdminCoordinators from "./pages/dashboard/admin/AdminCoordinators";
 import AdminNotices from "./pages/dashboard/admin/AdminNotices";
 import AdminRoles from "./pages/dashboard/admin/AdminRoles";
+import AdminTasks from "./pages/dashboard/admin/AdminTasks";
 
 const queryClient = new QueryClient();
 
@@ -65,6 +66,7 @@ const App = () => (
             <Route path="admin/coordinators" element={<AdminCoordinators />} />
             <Route path="admin/payments" element={<PaymentsPage />} />
             <Route path="admin/notices" element={<AdminNotices />} />
+            <Route path="admin/tasks" element={<AdminTasks />} />
             <Route path="admin/roles" element={<AdminRoles />} />
           </Route>
 
