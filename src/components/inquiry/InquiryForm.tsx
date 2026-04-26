@@ -8,6 +8,8 @@ import { Textarea } from "@/components/ui/textarea";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { toast } from "sonner";
 import { Loader2 } from "lucide-react";
+import { SITE, whatsappLink } from "@/config/site";
+import { generateAcknowledgement } from "@/lib/pdf";
 
 const schema = z.object({
   full_name: z.string().trim().min(2, "Name too short").max(100),
@@ -69,13 +71,30 @@ export default function InquiryForm({ defaultService = "NGO Website Setup", comp
       district: d.district || null,
       message: d.message || null,
     };
-    const { error } = await supabase.from("inquiries").insert([payload]);
+    const { data: inserted, error } = await supabase.from("inquiries").insert([payload]).select("id").maybeSingle();
     setLoading(false);
     if (error) {
       toast.error("Could not submit. Please try again.");
       return;
     }
-    toast.success("Thank you! We'll contact you shortly.");
+
+    // Acknowledgement PDF
+    const refNo = `INQ-${(inserted?.id ?? "").slice(0, 8).toUpperCase() || Date.now().toString(36).toUpperCase()}`;
+    try {
+      generateAcknowledgement({
+        refNo,
+        date: new Date().toLocaleDateString("en-IN"),
+        fullName: d.full_name,
+        serviceType: d.service_type,
+        mobile: d.mobile,
+      });
+    } catch {/* non-fatal */}
+
+    // Open WhatsApp prefilled chat to admin
+    const waMsg = `Hello ${SITE.shortName}, I am ${d.full_name} (Mobile: ${d.mobile}). I'm interested in: ${d.service_type}. Ref: ${refNo}.${d.message ? `\n\n${d.message}` : ""}`;
+    window.open(whatsappLink(waMsg), "_blank");
+
+    toast.success("Thank you! Acknowledgement downloaded — we'll contact you shortly.");
     setForm({ ...form, full_name: "", mobile: "", email: "", message: "" });
     onSuccess?.();
   };
@@ -128,6 +147,7 @@ export default function InquiryForm({ defaultService = "NGO Website Setup", comp
         {loading && <Loader2 className="h-4 w-4 animate-spin" />}
         Submit Inquiry
       </Button>
+      <p className="text-center text-xs text-muted-foreground">After submitting we'll open WhatsApp & download your acknowledgement PDF.</p>
     </form>
   );
 }
