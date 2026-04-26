@@ -25,8 +25,8 @@ export default function PaymentsPage() {
         <h1 className="font-display text-2xl font-extrabold text-primary">Payments</h1>
         <Button variant="hero" disabled><CreditCard className="h-4 w-4" /> Make Payment (Coming Soon)</Button>
       </div>
-      <Card className="overflow-hidden">
-        <table className="w-full text-sm">
+      <Card className="overflow-x-auto">
+        <table className="w-full min-w-[700px] text-sm">
           <thead className="bg-secondary text-primary">
             <tr>
               <th className="p-3 text-left">Date</th>
@@ -35,11 +35,12 @@ export default function PaymentsPage() {
               <th className="p-3 text-right">Amount</th>
               <th className="p-3 text-left">Status</th>
               <th className="p-3 text-left">Txn ID</th>
+              <th className="p-3"></th>
             </tr>
           </thead>
           <tbody>
             {items.length === 0 && (
-              <tr><td colSpan={6} className="p-6 text-center text-muted-foreground">No payments yet.</td></tr>
+              <tr><td colSpan={7} className="p-6 text-center text-muted-foreground">No payments yet.</td></tr>
             )}
             {items.map((p) => (
               <tr key={p.id} className="border-t">
@@ -49,6 +50,19 @@ export default function PaymentsPage() {
                 <td className="p-3 text-right font-semibold">₹{Number(p.amount).toLocaleString("en-IN")}</td>
                 <td className="p-3"><span className="rounded-full bg-secondary px-2 py-0.5 text-xs capitalize">{p.payment_status}</span></td>
                 <td className="p-3 text-xs text-muted-foreground">{p.txn_id ?? "—"}</td>
+                <td className="p-3">
+                  <Button size="sm" variant="ghost" onClick={() => generateReceiptPDF({
+                    receiptNo: `RCP-${p.id.slice(0,8).toUpperCase()}`,
+                    date: new Date(p.created_at).toLocaleDateString("en-IN"),
+                    payerName: p.payer_name,
+                    payerMobile: p.payer_mobile,
+                    amount: Number(p.amount),
+                    paymentType: p.payment_type,
+                    txnId: p.txn_id,
+                    status: p.payment_status,
+                    notes: p.notes,
+                  })}><Download className="h-3.5 w-3.5" /></Button>
+                </td>
               </tr>
             ))}
           </tbody>
