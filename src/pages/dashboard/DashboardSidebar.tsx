@@ -1,6 +1,6 @@
 import { Sidebar, SidebarContent, SidebarGroup, SidebarGroupContent, SidebarGroupLabel, SidebarMenu, SidebarMenuButton, SidebarMenuItem, useSidebar } from "@/components/ui/sidebar";
 import { NavLink } from "@/components/NavLink";
-import { Heart, LayoutDashboard, FileText, CreditCard, MessageSquare, Bell, Users, Globe, MapPin, ShieldCheck, Inbox, ClipboardList } from "lucide-react";
+import { Heart, LayoutDashboard, FileText, CreditCard, MessageSquare, Bell, Users, Globe, MapPin, ShieldCheck, Inbox, ClipboardList, Share2 } from "lucide-react";
 import type { AppRole } from "./DashboardLayout";
 
 interface Props { roles: AppRole[]; }
@@ -21,7 +21,10 @@ export default function DashboardSidebar({ roles }: Props) {
   ];
 
   const ngoItems = [{ to: "/dashboard/ngo", label: "My NGO Project", icon: Globe }];
-  const coordItems = [{ to: "/dashboard/coordinator", label: "My Coordinator Profile", icon: MapPin }];
+  const coordItems = [
+    { to: "/dashboard/coordinator", label: "My Coordinator Profile", icon: MapPin },
+    { to: "/dashboard/referrals", label: "My Referrals", icon: Share2 },
+  ];
 
   const adminItems = [
     { to: "/dashboard/admin/inquiries", label: "Inquiries", icon: Inbox },

@@ -24,6 +24,7 @@ import SupportPage from "./pages/dashboard/Support";
 import DocumentsPage from "./pages/dashboard/Documents";
 import MyNgo from "./pages/dashboard/MyNgo";
 import MyCoordinator from "./pages/dashboard/MyCoordinator";
+import MyReferrals from "./pages/dashboard/MyReferrals";
 import AdminInquiries from "./pages/dashboard/admin/AdminInquiries";
 import AdminClients from "./pages/dashboard/admin/AdminClients";
 import AdminCoordinators from "./pages/dashboard/admin/AdminCoordinators";
@@ -61,6 +62,7 @@ const App = () => (
             <Route path="documents" element={<DocumentsPage />} />
             <Route path="ngo" element={<MyNgo />} />
             <Route path="coordinator" element={<MyCoordinator />} />
+            <Route path="referrals" element={<MyReferrals />} />
             <Route path="admin/inquiries" element={<AdminInquiries />} />
             <Route path="admin/clients" element={<AdminClients />} />
             <Route path="admin/coordinators" element={<AdminCoordinators />} />
