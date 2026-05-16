@@ -152,8 +152,8 @@ export const template = {
     name: 'Rohit Sharma',
     status: 'approved',
     memberCode: 'MPH-COORD-0042',
-    roleLevel: 'District',
-    dashboardUrl: 'https://merepahal.org/dashboard',
+    roleLevel: 'district',
+    appBaseUrl: 'https://merepahal.org',
   },
 } satisfies TemplateEntry
 
