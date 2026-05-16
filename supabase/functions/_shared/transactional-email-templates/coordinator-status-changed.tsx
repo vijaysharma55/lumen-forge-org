@@ -21,49 +21,31 @@ interface CoordinatorStatusChangedProps {
   status?: 'approved' | 'rejected' | 'pending'
   memberCode?: string | null
   roleLevel?: string
+  /** Full deep-link URL. If omitted, derived from appBaseUrl + status + roleLevel. */
   dashboardUrl?: string
+  /** Origin like https://merepahal.org — used to build the deep link when dashboardUrl is absent. */
+  appBaseUrl?: string
 }
 
-const COPY: Record<
-  'approved' | 'rejected' | 'pending',
-  { preview: string; heading: string; intro: string; cta: string; steps: string[] }
-> = {
-  approved: {
-    preview: 'Your coordinator application has been approved',
-    heading: 'Welcome aboard — you are approved!',
-    intro:
-      'Congratulations! Your coordinator application has been approved. You can now access your dashboard and start contributing to our mission.',
-    cta: 'Open my dashboard',
-    steps: [
-      'Log in to your coordinator dashboard using your registered mobile/email.',
-      'Complete your profile and upload your ID proof in Documents.',
-      'Review the latest notices and assigned tasks.',
-      'Start referring NGOs and clients using your unique referral link.',
-    ],
-  },
-  rejected: {
-    preview: 'Update on your coordinator application',
-    heading: 'Your application needs attention',
-    intro:
-      'Thank you for applying. After review, we are unable to approve your coordinator application at this time. You may re-apply with updated details or reach out to our support team for guidance.',
-    cta: 'Contact support',
-    steps: [
-      'Review the details you submitted in your application.',
-      'Prepare any additional documents requested by the team.',
-      'Reach out to our support team for a re-review.',
-    ],
-  },
-  pending: {
-    preview: 'Your coordinator application status has been updated',
-    heading: 'Application status updated',
-    intro:
-      'Your coordinator application is currently under review. We will notify you as soon as a decision is made.',
-    cta: 'View my dashboard',
-    steps: [
-      'Keep your documents ready for verification.',
-      'Check your dashboard for any updates or required actions.',
-    ],
-  },
+const DEFAULT_BASE = 'https://merepahal.org'
+
+const resolveDashboardUrl = (
+  status: 'approved' | 'rejected' | 'pending',
+  roleLevel: string | undefined,
+  appBaseUrl: string | undefined,
+  explicit?: string,
+): string => {
+  if (explicit) return explicit
+  const base = (appBaseUrl ?? DEFAULT_BASE).replace(/\/+$/, '')
+  const role = (roleLevel ?? '').toLowerCase()
+  if (status === 'rejected') return `${base}/contact`
+  if (status === 'pending') return `${base}/dashboard`
+  // approved — deep link by role level
+  if (role === 'admin' || role === 'national') return `${base}/dashboard/admin/coordinators`
+  if (role) {
+    return `${base}/dashboard/coordinator?role=${encodeURIComponent(role)}`
+  }
+  return `${base}/dashboard/coordinator`
 }
 
 const CoordinatorStatusChangedEmail = ({
@@ -71,9 +53,11 @@ const CoordinatorStatusChangedEmail = ({
   status = 'approved',
   memberCode,
   roleLevel,
-  dashboardUrl = 'https://merepahal.org/dashboard',
+  dashboardUrl,
+  appBaseUrl,
 }: CoordinatorStatusChangedProps) => {
   const copy = COPY[status] ?? COPY.approved
+  const resolvedUrl = resolveDashboardUrl(status, roleLevel, appBaseUrl, dashboardUrl)
 
   const badgeStyle =
     status === 'approved' ? badgeApproved : status === 'rejected' ? badgeRejected : badgePending
@@ -129,15 +113,15 @@ const CoordinatorStatusChangedEmail = ({
             </Section>
 
             <Section style={{ textAlign: 'center', margin: '32px 0 8px' }}>
-              <Button style={button} href={dashboardUrl}>
+              <Button style={button} href={resolvedUrl}>
                 {copy.cta}
               </Button>
             </Section>
 
             <Text style={fallback}>
               Or copy this link into your browser:{' '}
-              <Link href={dashboardUrl} style={link}>
-                {dashboardUrl}
+              <Link href={resolvedUrl} style={link}>
+                {resolvedUrl}
               </Link>
             </Text>
           </Section>
@@ -168,8 +152,8 @@ export const template = {
     name: 'Rohit Sharma',
     status: 'approved',
     memberCode: 'MPH-COORD-0042',
-    roleLevel: 'District',
-    dashboardUrl: 'https://merepahal.org/dashboard',
+    roleLevel: 'district',
+    appBaseUrl: 'https://merepahal.org',
   },
 } satisfies TemplateEntry
 
