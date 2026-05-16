@@ -113,15 +113,15 @@ const CoordinatorStatusChangedEmail = ({
             </Section>
 
             <Section style={{ textAlign: 'center', margin: '32px 0 8px' }}>
-              <Button style={button} href={dashboardUrl}>
+              <Button style={button} href={resolvedUrl}>
                 {copy.cta}
               </Button>
             </Section>
 
             <Text style={fallback}>
               Or copy this link into your browser:{' '}
-              <Link href={dashboardUrl} style={link}>
-                {dashboardUrl}
+              <Link href={resolvedUrl} style={link}>
+                {resolvedUrl}
               </Link>
             </Text>
           </Section>
